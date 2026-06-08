@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lumina — A thoughtful magazine exploring mindfulness, philosophy, psychology, and campus life. Discover ideas that matter." />
+  <title>PROVEN PSYCHOLOGY JOURNAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== ANNOUNCEMENT BAR ===== -->
+  <div class="announcement-bar" id="announcement-bar">
+    <span>✦ New Issue: The Art of Slow Living — Spring 2026</span>
+    <span class="sep">|</span>
+    <a href="#subscribe">Subscribe for free</a>
+    <button class="ann-close" id="ann-close" aria-label="Close announcement">×</button>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="header-top">
+      <div class="header-utils">
+        <button class="util-btn" id="search-toggle" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        
+        <a href="#about" class="util-btn util-text">About</a>
+        <a href="#contact" class="util-btn util-text">Contact</a>
+      </div>
+
+      <a href="#home" class="logo" aria-label="Lumina Home">
+        <span class="logo-icon">✦</span>
+        <div>
+          <span class="logo-main">PROVEN PSYCHOLOGY JOURNAL</span>
+          <span class="logo-sub">Mind · Philosophy · Society</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram" id="insta-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube" id="yt-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+        <a href="#subscribe" class="btn-subscribe">Subscribe</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SEARCH BAR -->
+    <div class="search-bar" id="search-bar">
+      <div class="search-inner">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="search-input" placeholder="Search articles, topics, authors…" autocomplete="off" />
+        <button id="search-close" aria-label="Close search">×</button>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="main-nav" id="main-nav">
+      <div class="nav-inner">
+        <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#mindfulness" class="nav-link" data-section="mindfulness">Mindfulness</a>
+        <a href="#philosophy" class="nav-link" data-section="philosophy">Philosophy</a>
+        <a href="#psychology" class="nav-link" data-section="psychology">Psychology</a>
+        <a href="#reflective" class="nav-link" data-section="reflective">Reflective Insights</a>
+        <a href="#campus" class="nav-link" data-section="campus">Campus News</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <button class="mobile-close" id="mobile-close">×</button>
+      <a href="#home" class="m-nav-link" data-section="home">Home</a>
+      <a href="#mindfulness" class="m-nav-link" data-section="mindfulness">Mindfulness</a>
+      <a href="#philosophy" class="m-nav-link" data-section="philosophy">Philosophy </a>
+      <a href="#psychology" class="m-nav-link" data-section="psychology">Psychology  </a>
+      <a href="#reflective" class="m-nav-link" data-section="reflective">Reflective Insights</a>
+      <a href="#campus" class="m-nav-link" data-section="campus">Campus News</a>
+      <div class="m-divider"></div>
+      <a href="#about" class="m-nav-link">About Us</a>
+      <a href="#contact" class="m-nav-link">Contact</a>
+      <a href="#faq" class="m-nav-link">Help / FAQ</a>
+      <div class="m-divider"></div>
+      <div class="m-lang">
+        <span>Language:</span>
+        <button class="lang-option active" data-lang="EN">EN</button>
+        <button class="lang-option" data-lang="AR">AR</button>
+        <button class="lang-option" data-lang="FR">FR</button>
+      </div>
+      <div class="m-social">
+        <a href="#" aria-label="Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="home">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero-section">
+      <div class="hero-featured">
+        <div class="hero-image-wrap">
+          <img src="images/hero_banner.png" alt="A serene moment of mindfulness in nature" class="hero-img" loading="eager" />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+          <span class="hero-tag">✦ Featured · Mindfulness </span>
+          <h1 class="hero-title">The Quiet Revolution:<br>Why Stillness Is the New Strength</h1>
+          <p class="hero-excerpt">In an age of relentless noise, the most radical act may be to simply pause. We explore how ancient practices of mindfulness are reshaping modern communities — one breath at a time.</p>
+          <div class="hero-meta">
+            <span class="hero-author">By Layla Ahmadi</span>
+            <span class="hero-dot">·</span>
+            <span class="hero-date">May 28, 2026</span>
+            <span class="hero-dot">·</span>
+            <span class="hero-read">8 min read</span>
+          </div>
+          <a href="#article-modal" class="btn-read-more" id="hero-read-btn" data-article="0">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- SIDE STORIES -->
+      <div class="hero-side">
+        <div class="side-card" data-article="1">
+          <img src="images/article_philosophy.png" alt="Philosophy article" />
+          <div class="side-card-content">
+            <span class="side-tag">Philosophy</span>
+            <h3>On the Courage to Think Differently</h3>
+            <span class="side-date">May 25, 2026</span>
+          </div>
+        </div>
+        <div class="side-card" data-article="2">
+          <img src="images/article_psychology.png" alt="Psychology article" />
+          <div class="side-card-content">
+            <span class="side-tag">Psychology</span>
+            <h3>The Neuroscience of Hope</h3>
+            <span class="side-date">May 22, 2026</span>
+          </div>
+        </div>
+        <div class="side-card" data-article="3">
+          <img src="images/article_campus.png" alt="Campus article" />
+          <div class="side-card-content">
+            <span class="side-tag">Campus</span>
+            <h3>Students Launch Wellness Collective</h3>
+            <span class="side-date">May 20, 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker-label">TRENDING</div>
+      <div class="ticker-track">
+        <div class="ticker-content" id="ticker">
+          <span>✦ The Philosophy of Letting Go &nbsp;&nbsp;&nbsp; ✦ Mindfulness in Schools: Does It Work? &nbsp;&nbsp;&nbsp; ✦ The Rise of the Contemplative University &nbsp;&nbsp;&nbsp; ✦ Why Gen Z is Turning to Stoicism &nbsp;&nbsp;&nbsp; ✦ Dreaming as a Path to Self-Knowledge &nbsp;&nbsp;&nbsp; ✦ Campus Mental Health Crisis: A Special Report &nbsp;&nbsp;&nbsp;</span>
+          <span aria-hidden="true">✦ The Philosophy of Letting Go &nbsp;&nbsp;&nbsp; ✦ Mindfulness in Schools: Does It Work? &nbsp;&nbsp;&nbsp; ✦ The Rise of the Contemplative University &nbsp;&nbsp;&nbsp; ✦ Why Gen Z is Turning to Stoicism &nbsp;&nbsp;&nbsp; ✦ Dreaming as a Path to Self-Knowledge &nbsp;&nbsp;&nbsp; ✦ Campus Mental Health Crisis: A Special Report &nbsp;&nbsp;&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MINDFULNESS  ===== -->
+    <section class="section-block" id="mindfulness">
+      <div class="section-header">
+        <div class="section-label-wrap">
+          <span class="section-dot mindfulness-dot"></span>
+          <span class="section-label">Mindfulness </span>
+        </div>
+        <a href="#mindfulness" class="view-all">View All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="articles-grid">
+        <article class="article-card featured-card" data-article="4">
+          <div class="card-image-wrap">
+            <img src="images/article_mindfulness.png" alt="Mindfulness article" loading="lazy" />
+            <span class="card-tag">Featured</span>
+          </div>
+          <div class="card-content">
+            <span class="card-category">Mindfulness </span>
+            <h2 class="card-title">Slow Down: How Urban Communities Are Reclaiming Their Time</h2>
+            <p class="card-excerpt">From intentional living movements to digital detox retreats, cities around the world are reimagining what it means to live a meaningful life.</p>
+            <div class="card-footer">
+              <span class="card-author">By Nour Hassan</span>
+              <span class="card-date">May 26, 2026 · 6 min</span>
+            </div>
+          </div>
+        </article>
+        <article class="article-card" data-article="5">
+          <div class="card-image-wrap small">
+            <div class="card-color-bg mindfulness-bg"></div>
+          </div>
+          <div class="card-content">
+            <span class="card-category">Mindfulness </span>
+            <h3 class="card-title">The Social Media Paradox: Connected Yet Alone</h3>
+            <div class="card-footer">
+              <span class="card-author">By Sara Al-Jabri</span>
+              <span class="card-date">May 18, 2026 · 5 min</span>
+            </div>
+          </div>
+        </article>
+        <article class="article-card" data-article="6">
+          <div class="card-image-wrap small">
+            <div class="card-color-bg mindfulness-bg2"></div>
+          </div>
+          <div class="card-content">
+            <span class="card-category">Mindfulness </span>
+            <h3 class="card-title">Breathing Together: The Power of Community Meditation</h3>
+            <div class="card-footer">
+              <span class="card-author">By Khalid Mansour</span>
+              <span class="card-date">May 14, 2026 · 4 min</span>
+            </div>
+          </div>
+        </article>
+        <article class="article-card" data-article="7">
+          <div class="card-image-wrap small">
+            <div class="card-color-bg mindfulness-bg3"></div>
+          </div>
+          <div class="card-content">
+            <span class="card-category">Mindfulness </span>
+            <h3 class="card-title">Nature as Medicine: Forest Bathing and Urban Stress</h3>
+            <div class="card-footer">
+              <span class="card-author">By Amira Toumi</span>
+              <span class="card-date">May 10, 2026 · 7 min</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PHILOSOPHY  ===== -->
+    <section class="section-block alt-bg" id="philosophy">
+      <div class="section-header">
+        <div class="section-label-wrap">
+          <span class="section-dot philosophy-dot"></span>
+          <span class="section-label">Philosophy </span>
+        </div>
+        <a href="#philosophy" class="view-all">View All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="articles-list">
+        <article class="list-card" data-article="8">
+          <div class="list-card-image">
+            <img src="images/article_philosophy.png" alt="Philosophy" loading="lazy" />
+          </div>
+          <div class="list-card-content">
+            <span class="card-category">Philosophy</span>
+            <h2 class="list-card-title">Stoicism in the Digital Age: Ancient Wisdom for Modern Anxiety</h2>
+            <p class="list-card-excerpt">Marcus Aurelius couldn't have imagined notification badges or doomscrolling — yet his meditations speak directly to our contemporary crisis of attention and meaning.</p>
+            <div class="card-footer">
+              <span class="card-author">By Dr. Reem Khalil</span>
+              <span class="card-date">May 24, 2026 · 10 min</span>
+              <span class="card-tag-inline">Essay</span>
+            </div>
+          </div>
+        </article>
+        <article class="list-card" data-article="9">
+          <div class="list-card-image">
+            <div class="card-color-bg philosophy-bg"></div>
+          </div>
+          <div class="list-card-content">
+            <span class="card-category">Philosophy</span>
+            <h2 class="list-card-title">The Sufi Path: Mysticism as a Way of Knowing</h2>
+            <p class="list-card-excerpt">Beyond the rituals of religion lies a tradition of spiritual inquiry that rivals the most rigorous philosophical traditions of the West.</p>
+            <div class="card-footer">
+              <span class="card-author">By Tariq Al-Rashid</span>
+              <span class="card-date">May 19, 2026 · 8 min</span>
+              <span class="card-tag-inline">Deep Dive</span>
+            </div>
+          </div>
+        </article>
+        <article class="list-card" data-article="10">
+          <div class="list-card-image">
+            <div class="card-color-bg philosophy-bg2"></div>
+          </div>
+          <div class="list-card-content">
+            <span class="card-category">Philosophy</span>
+            <h2 class="list-card-title">Between Certainty and Doubt: Living the Questions</h2>
+            <p class="list-card-excerpt">Rilke told us to live the questions. But in an age demanding instant answers, can we afford the luxury of not knowing?</p>
+            <div class="card-footer">
+              <span class="card-author">By Yasmine Ouhbi</span>
+              <span class="card-date">May 15, 2026 · 6 min</span>
+              <span class="card-tag-inline">Opinion</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PSYCHOLOGY ===== -->
+    <section class="section-block" id="psychology">
+      <div class="section-header">
+        <div class="section-label-wrap">
+          <span class="section-dot psychology-dot"></span>
+          <span class="section-label">Psychology</span>
+        </div>
+        <a href="#psychology" class="view-all">View All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="psych-grid">
+        <article class="psych-main" data-article="11">
+          <div class="psych-image">
+            <img src="images/article_psychology.png" alt="Psychology" loading="lazy" />
+            <span class="card-tag">Research</span>
+          </div>
+          <div class="card-content">
+            <span class="card-category">Psychology</span>
+            <h2 class="card-title">The Neuroscience of Hope: What Brain Science Tells Us About Resilience</h2>
+            <p class="card-excerpt">New research reveals how the hopeful brain literally rewires itself — and why cultivating optimism is one of the most scientifically sound things you can do.</p>
+            <div class="card-footer">
+              <span class="card-author">By Prof. Lena Marek</span>
+              <span class="card-date">May 27, 2026 · 12 min</span>
+            </div>
+          </div>
+        </article>
+        <div class="psych-side">
+          <article class="psych-small" data-article="12">
+            <span class="card-category">Psychology  </span>
+            <h3>The Trauma We Inherit: Epigenetics and Ancestral Memory</h3>
+            <div class="card-footer">
+              <span class="card-date">May 21, 2026 · 9 min</span>
+            </div>
+          </article>
+          <article class="psych-small" data-article="13">
+            <span class="card-category">Psychology  </span>
+            <h3>Decision Fatigue: Why Your Brain Runs Out of Choices</h3>
+            <div class="card-footer">
+              <span class="card-date">May 17, 2026 · 5 min</span>
+            </div>
+          </article>
+          <article class="psych-small" data-article="14">
+            <span class="card-category">Psychology  </span>
+            <h3>Flow States: The Science of Being Fully Alive</h3>
+            <div class="card-footer">
+              <span class="card-date">May 12, 2026 · 7 min</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REFLECTIVE INSIGHTS ===== -->
+    <section class="section-block reflective-section" id="reflective">
+      <div class="section-header">
+        <div class="section-label-wrap">
+          <span class="section-dot reflective-dot"></span>
+          <span class="section-label">Reflective Insights</span>
+        </div>
+        <a href="#reflective" class="view-all">View All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="reflective-grid">
+        <article class="reflective-quote" data-article="15">
+          <div class="quote-image">
+            <img src="images/article_reflective.png" alt="Reflective Insights" loading="lazy" />
+          </div>
+          <div class="quote-content">
+            <div class="pull-quote">"The longest journey is the journey inward."</div>
+            <div class="quote-attr">— Dag Hammarskjöld</div>
+            <h2 class="card-title">On Solitude and Self-Discovery: A Personal Essay</h2>
+            <p class="card-excerpt">What happens when we stop running from ourselves? A meditation on the gifts and challenges of true solitude in a world built for distraction.</p>
+            <div class="card-footer">
+              <span class="card-author">By Maya Elias</span>
+              <span class="card-date">May 23, 2026 · 9 min</span>
+            </div>
+            <a href="#" class="btn-text-link">Read Essay <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <div class="reflective-small-grid">
+          <article class="reflective-small" data-article="16">
+            <div class="card-color-bg reflective-bg"></div>
+            <div class="reflective-small-content">
+              <span class="card-category">Reflective Insights</span>
+              <h3>Gratitude as a Daily Practice: More Than a Trend</h3>
+              <span class="card-date">May 20, 2026 · 4 min</span>
+            </div>
+          </article>
+          <article class="reflective-small" data-article="17">
+            <div class="card-color-bg reflective-bg2"></div>
+            <div class="reflective-small-content">
+              <span class="card-category">Reflective Insights</span>
+              <h3>The Art of Doing Nothing: Sabbath for the Modern Soul</h3>
+              <span class="card-date">May 16, 2026 · 5 min</span>
+            </div>
+          </article>
+          <article class="reflective-small" data-article="18">
+            <div class="card-color-bg reflective-bg3"></div>
+            <div class="reflective-small-content">
+              <span class="card-category">Reflective Insights</span>
+              <h3>Letters to the Future Self: A Writing Exercise</h3>
+              <span class="card-date">May 11, 2026 · 3 min</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CAMPUS NEWS ===== -->
+    <section class="section-block alt-bg" id="campus">
+      <div class="section-header">
+        <div class="section-label-wrap">
+          <span class="section-dot campus-dot"></span>
+          <span class="section-label">Campus News</span>
+        </div>
+        <a href="#campus" class="view-all">View All <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="campus-grid">
+        <article class="campus-main" data-article="19">
+          <div class="campus-image">
+            <img src="images/article_campus.png" alt="Campus" loading="lazy" />
+            <span class="breaking-tag">Breaking</span>
+          </div>
+          <div class="card-content">
+            <span class="card-category">Campus News</span>
+            <h2 class="card-title">Student-Led Wellness Initiative Transforms Campus Culture</h2>
+            <p class="card-excerpt">A grassroots movement born in a small dorm room has grown into a university-wide mental health program, changing how students relate to stress, identity, and community.</p>
+            <div class="card-footer">
+              <span class="card-author">By Omar Fawzi</span>
+              <span class="card-date">May 29, 2026 · 7 min</span>
+            </div>
+          </div>
+        </article>
+        <div class="campus-side">
+          <article class="campus-small" data-article="20">
+            <span class="campus-small-date">May 27, 2026</span>
+            <h3>Philosophy Club Hosts Annual Socratic Debate Night</h3>
+            <span class="card-category">Campus News</span>
+          </article>
+          <article class="campus-small" data-article="21">
+            <span class="campus-small-date">May 25, 2026</span>
+            <h3>New Psychology Research Lab Opens at North Campus</h3>
+            <span class="card-category">Campus News</span>
+          </article>
+          <article class="campus-small" data-article="22">
+            <span class="campus-small-date">May 23, 2026</span>
+            <h3>Annual Mindfulness Week: Schedule and Events</h3>
+            <span class="card-category">Campus News</span>
+          </article>
+          <article class="campus-small" data-article="23">
+            <span class="campus-small-date">May 21, 2026</span>
+            <h3>Student Journal "Inward" Launches Third Issue</h3>
+            <span class="card-category">Campus News</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOLLOW US ===== -->
+    <section class="follow-section">
+      <div class="follow-inner">
+        <h2 class="follow-title">Follow Our Journey</h2>
+        <p class="follow-sub">Stay connected with our community across platforms</p>
+        <div class="follow-cards">
+          <a href="#" class="follow-card insta-card" id="follow-insta">
+            <div class="follow-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div>
+              <div class="follow-platform">Instagram</div>
+              <div class="follow-handle">@lumina.magazine</div>
+            </div>
+            <div class="follow-cta">Follow ↗</div>
+          </a>
+          <a href="#" class="follow-card yt-card" id="follow-yt">
+            <div class="follow-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div>
+              <div class="follow-platform">YouTube</div>
+              <div class="follow-handle">Lumina Magazine</div>
+            </div>
+            <div class="follow-cta">Subscribe ↗</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SUBSCRIBE ===== -->
+    <section class="subscribe-section" id="subscribe">
+      <div class="subscribe-inner">
+        <div class="subscribe-content">
+          <span class="subscribe-eyebrow">✦ Free Newsletter</span>
+          <h2 class="subscribe-title">Ideas Worth Dwelling On</h2>
+          <p class="subscribe-desc">Join over 12,000 readers receiving our weekly curation of the most thoughtful writing on mind, soul, and society — delivered every Sunday morning.</p>
+          <ul class="subscribe-perks">
+            <li>✦ Curated weekly digest</li>
+            <li>✦ Exclusive essays & interviews</li>
+            <li>✦ Early access to new issues</li>
+          </ul>
+        </div>
+        <div class="subscribe-form-wrap">
+          <form class="subscribe-form" id="subscribe-form" novalidate>
+            <div class="form-group">
+              <label for="sub-name">Full Name</label>
+              <input type="text" id="sub-name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="sub-email">Email Address</label>
+              <input type="email" id="sub-email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="sub-interest">Primary Interest</label>
+              <select id="sub-interest">
+                <option value="">All Topics</option>
+                <option value="mindfulness">Mindfulness</option>
+                <option value="philosophy">Philosophy</option>
+                <option value="psychology">Psychology</option>
+                <option value="reflective">Reflective Insights</option>
+                <option value="campus">Campus News</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-subscribe-form" id="sub-btn">Subscribe Free</button>
+            <p class="form-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
+          </form>
+          <div class="subscribe-success hidden" id="sub-success">
+            <div class="success-icon">✦</div>
+            <h3>Welcome to Lumina!</h3>
+            <p>You're now part of our community. Your first digest arrives this Sunday.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about-section" id="about">
+      <div class="about-inner">
+        <div class="about-content">
+          <span class="section-eyebrow">✦ About PROVEN PSYCHOLOGY JOURNAL</span>
+          <h2 class="about-title">A Magazine Born from Curiosity</h2>
+          <p>PROVEN PSYCHOLOGY JOURNAL was founded in 2026 by a group of students, academics, and writers who believed that the most important conversations were happening outside lecture halls and beyond social media feeds.</p>
+          <p>We are an independent, non-commercial publication dedicated to the life of the mind. We publish essays, interviews, research summaries, and personal reflections that challenge, comfort, and inspire.</p>
+          <p>Our team is spread across five cities, but we share a single conviction: that thoughtful writing can change the way we see ourselves and the world.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">12K+</span>
+              <span class="stat-label">Subscribers</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">200+</span>
+              <span class="stat-label">Articles</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">4</span>
+              <span class="stat-label">Years</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">18</span>
+              <span class="stat-label">Contributors</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn-outline">Get in Touch</a>
+        </div>
+        <div class="about-visual">
+          <div class="about-card-stack">
+            <div class="about-card ac1">
+              <span class="about-card-icon">◎</span>
+              <h4>Editorial Independence</h4>
+              <p>We are reader-supported and free of commercial influence.</p>
+            </div>
+            <div class="about-card ac2">
+              <span class="about-card-icon">◈</span>
+              <h4>Diverse Perspectives</h4>
+              <p>Our writers bring voices from across disciplines and cultures.</p>
+            </div>
+            <div class="about-card ac3">
+              <span class="about-card-icon">◇</span>
+              <h4>Slow Journalism</h4>
+              <p>We value depth over speed, reflection over reaction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact-section alt-bg" id="contact">
+      <div class="contact-inner">
+        <div class="contact-info">
+          <span class="section-eyebrow">✦ Get in Touch</span>
+          <h2 class="contact-title">We'd Love to Hear from You</h2>
+          <p>Whether you have a story idea, want to contribute, or simply want to share your thoughts — our inbox is always open.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>hello@luminamag.com</span>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Campus Press Building, Room 204</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ct-name">Name</label>
+              <input type="text" id="ct-name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="ct-email">Email</label>
+              <input type="email" id="ct-email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ct-subject">Subject</label>
+            <select id="ct-subject">
+              <option value="">Select a topic…</option>
+              <option>Story Submission</option>
+              <option>General Inquiry</option>
+              <option>Partnership</option>
+              <option>Press & Media</option>
+              <option>Technical Issue</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ct-msg">Message</label>
+            <textarea id="ct-msg" rows="5" placeholder="Tell us what's on your mind…" required></textarea>
+          </div>
+          <button type="submit" class="btn-subscribe-form" id="ct-btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq-section" id="faq">
+      <div class="faq-inner">
+        <span class="section-eyebrow">✦ Help & FAQ</span>
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" id="faq-1" aria-expanded="false">How do I subscribe to Lumina?</button>
+            <div class="faq-answer" aria-labelledby="faq-1">
+              <p>Simply scroll to our Subscribe section above, enter your name and email, select your interests, and click "Subscribe Free". You'll receive a confirmation email shortly after.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-2" aria-expanded="false">Can I submit an article or essay?</button>
+            <div class="faq-answer" aria-labelledby="faq-2">
+              <p>Yes! We welcome submissions from writers, students, academics, and thoughtful individuals. Use the Contact form above and select "Story Submission". Include a brief pitch and a sample of your writing.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-3" aria-expanded="false">Is Lumina free to read?</button>
+            <div class="faq-answer" aria-labelledby="faq-3">
+              <p>Yes — all our content is completely free. We are reader-supported and believe that good writing should be accessible to everyone. You can support us by subscribing to our newsletter and sharing our articles.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-4" aria-expanded="false">How often is new content published?</button>
+            <div class="faq-answer" aria-labelledby="faq-4">
+              <p>We publish new articles several times per week across our five topic sections. Our newsletter digest is sent every Sunday morning and curates the best of the week.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-5" aria-expanded="false">Is there a way to read Lumina in Arabic or French?</button>
+            <div class="faq-answer" aria-labelledby="faq-5">
+              <p>We are actively working on multilingual support. Use the Language switcher at the top of the page to see available translations. Arabic and French editions are in beta and growing rapidly.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-6" aria-expanded="false">How do I report a technical issue?</button>
+            <div class="faq-answer" aria-labelledby="faq-6">
+              <p>Please use the Contact form above and select "Technical Issue" as the subject. Describe what you were doing, what browser you're using, and what went wrong. Our team will respond within 48 hours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="footer-logo">
+          <span class="logo-icon">✦</span>
+          <div>
+            <span class="logo-main">PROVEN PSYCHOLOGY JOURNAL</span>
+            <span class="logo-sub">Mind · Soul · Society</span>
+          </div>
+        </a>
+        <p class="footer-desc">A thoughtful magazine exploring the intersections of mind, soul, and society. Independent since 2022.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram" class="footer-social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="footer-social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <a href="#mindfulness">Mindfulness</a>
+          <a href="#philosophy">Philosophy</a>
+          <a href="#psychology">Psychology </a>
+          <a href="#reflective">Reflective Insights</a>
+          <a href="#campus">Campus News</a>
+        </div>
+        <div class="footer-col">
+          <h4>Magazine</h4>
+          <a href="#about">About Us</a>
+          <a href="#subscribe">Newsletter</a>
+          <a href="#contact">Contact</a>
+          <a href="#faq">Help / FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="#">Submit a Story</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Lumina Magazine. Made with care and curiosity.</span>
+      <span>Independent · Open Access · Ad-Free</span>
+    </div>
+  </footer>
+
+  <!-- ARTICLE MODAL -->
+  <div class="modal-overlay" id="article-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">×</button>
+      <div class="modal-body" id="modal-body">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="articles-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
