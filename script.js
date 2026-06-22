@@ -89,6 +89,17 @@ function renderAllSections(articles) {
         <a href="#article-modal" class="btn-read-more" id="hero-read-btn" data-article="${a.id}">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     `;
+  } else if (heroFeaturedContainer) {
+    heroFeaturedContainer.innerHTML = `
+      <div class="hero-image-wrap">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <span class="hero-tag">✦ Proven Psychology Journal</span>
+        <h1 class="hero-title">Articles Coming Soon</h1>
+        <p class="hero-excerpt">New articles are on the way. Check back soon or subscribe to be notified.</p>
+      </div>
+    `;
   }
   if (heroSideContainer && newestFirst.length > 1) {
     const sideArticles = newestFirst.slice(1, 4);
@@ -102,6 +113,8 @@ function renderAllSections(articles) {
         </div>
       </div>
     `).join('');
+  } else if (heroSideContainer) {
+    heroSideContainer.innerHTML = '';
   }
 
   const getCategoryArticles = (cat) => newestFirst.filter(a => 
@@ -157,6 +170,8 @@ function renderAllSections(articles) {
         `;
       });
       mindfulnessContainer.innerHTML = html;
+    } else {
+      mindfulnessContainer.innerHTML = '';
     }
   }
 
@@ -202,6 +217,8 @@ function renderAllSections(articles) {
         `;
       }
       psychologyContainer.innerHTML = html;
+    } else {
+      psychologyContainer.innerHTML = '';
     }
   }
 
@@ -254,6 +271,8 @@ function renderAllSections(articles) {
         `;
       }
       reflectiveContainer.innerHTML = html;
+    } else {
+      reflectiveContainer.innerHTML = '';
     }
   }
 
@@ -295,6 +314,8 @@ function renderAllSections(articles) {
         `;
       }
       campusContainer.innerHTML = html;
+    } else {
+      campusContainer.innerHTML = '';
     }
   }
 }
