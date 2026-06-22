@@ -1,5 +1,5 @@
 /* =============================================
-   LUMINA MAGAZINE — script.js (FIXED + Admin-Ready)
+   PROVEN PSYCHOLOGY JOURNAL — script.js (Admin-Ready)
    Uses localStorage to sync with admin panel
    ============================================= */
 
@@ -16,13 +16,13 @@ async function refreshArticles() {
     cachedArticles = await res.json();
     // Sync to localStorage as backup
     try {
-      localStorage.setItem('lumina_articles', JSON.stringify(cachedArticles));
+      localStorage.setItem('ppj_articles', JSON.stringify(cachedArticles));
     } catch (err) {}
     return cachedArticles;
   } catch (e) {
     console.warn('API fetch failed, falling back to local storage:', e);
     try {
-      const stored = localStorage.getItem('lumina_articles');
+      const stored = localStorage.getItem('ppj_articles');
       if (stored) {
         cachedArticles = JSON.parse(stored);
         if (cachedArticles && cachedArticles.length > 0) {
@@ -43,9 +43,9 @@ function loadArticles() {
 function getArticleById(id) {
   const all = loadArticles();
   return all.find(a => a.id === id) || {
-    id, category: 'Lumina Magazine', img: 'images/hero_banner.png',
+    id, category: 'Psychology', img: 'images/hero_banner.png',
     title: 'Article Coming Soon',
-    author: 'Lumina Editorial', date: 'May 2026', read: '5 min read',
+    author: 'PPJ Editorial', date: 'May 2026', read: '5 min read',
     excerpt: 'This article will be published soon.',
     content: '<p>This article is coming soon. Subscribe to our newsletter to be the first to read it when it publishes.</p>'
   };
@@ -104,12 +104,16 @@ function renderAllSections(articles) {
     `).join('');
   }
 
-  const getCategoryArticles = (cat) => newestFirst.filter(a => a.category === cat);
+  const getCategoryArticles = (cat) => newestFirst.filter(a => 
+    a.category === cat ||
+    (cat === 'Mindfulness & Society' && (a.category === 'Mindfulness' || a.category === 'Mindfulness & Society')) ||
+    (cat === 'Psychology & Science' && (a.category === 'Psychology' || a.category === 'Psychology & Science'))
+  );
 
-  // 2. MINDFULNESS & SOCIETY
+  // 2. MINDFULNESS
   const mindfulnessContainer = document.querySelector('#mindfulness .articles-grid');
   if (mindfulnessContainer) {
-    const catArts = getCategoryArticles('Mindfulness & Society');
+    const catArts = getCategoryArticles('Mindfulness');
     if (catArts.length > 0) {
       const main = catArts[0];
       const others = catArts.slice(1, 4);
@@ -133,7 +137,7 @@ function renderAllSections(articles) {
       const bgClasses = ['mindfulness-bg', 'mindfulness-bg2', 'mindfulness-bg3'];
       others.forEach((a, i) => {
         const bgClass = bgClasses[i % bgClasses.length];
-        const imageHtml = a.img && !a.img.includes('hero_banner') && !a.img.includes('article_mindfulness')
+        const imageHtml = a.img
           ? `<img src="${a.img}" alt="${a.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />`
           : `<div class="card-color-bg ${bgClass}"></div>`;
         html += `
@@ -156,40 +160,12 @@ function renderAllSections(articles) {
     }
   }
 
-  // 3. PHILOSOPHY & SPIRITUALITY
-  const philosophyContainer = document.querySelector('#philosophy .articles-list');
-  if (philosophyContainer) {
-    const catArts = getCategoryArticles('Philosophy & Spirituality').slice(0, 3);
-    const bgClasses = ['philosophy-bg', 'philosophy-bg2', 'philosophy-bg3'];
-    philosophyContainer.innerHTML = catArts.map((a, i) => {
-      const bgClass = bgClasses[i % bgClasses.length];
-      const imageHtml = a.img && !a.img.includes('hero_banner') && !a.img.includes('article_philosophy')
-        ? `<img src="${a.img}" alt="${a.title}" loading="lazy" />`
-        : `<div class="card-color-bg ${bgClass}"></div>`;
-      return `
-        <article class="list-card" data-article="${a.id}">
-          <div class="list-card-image">
-            ${imageHtml}
-          </div>
-          <div class="list-card-content">
-            <span class="card-category">${a.category}</span>
-            <h2 class="list-card-title">${a.title}</h2>
-            <p class="list-card-excerpt">${a.excerpt || ''}</p>
-            <div class="card-footer">
-              <span class="card-author">By ${a.author}</span>
-              <span class="card-date">${formatDate(a.date)} · ${a.read}</span>
-              <span class="card-tag-inline">Essay</span>
-            </div>
-          </div>
-        </article>
-      `;
-    }).join('');
-  }
 
-  // 4. PSYCHOLOGY & SCIENCE
+
+  // 4. PSYCHOLOGY
   const psychologyContainer = document.querySelector('#psychology .psych-grid');
   if (psychologyContainer) {
-    const catArts = getCategoryArticles('Psychology & Science');
+    const catArts = getCategoryArticles('Psychology');
     if (catArts.length > 0) {
       const main = catArts[0];
       const others = catArts.slice(1, 4);
@@ -260,9 +236,12 @@ function renderAllSections(articles) {
           <div class="reflective-small-grid">
             ${others.map((a, i) => {
               const bgClass = bgClasses[i % bgClasses.length];
+              const imageHtml = a.img
+                ? `<img src="${a.img}" alt="${a.title}" loading="lazy" style="width:100%;height:90px;object-fit:cover;flex-shrink:0;" />`
+                : `<div class="card-color-bg ${bgClass}"></div>`;
               return `
                 <article class="reflective-small" data-article="${a.id}">
-                  <div class="card-color-bg ${bgClass}"></div>
+                  ${imageHtml}
                   <div class="reflective-small-content">
                     <span class="card-category">${a.category}</span>
                     <h3>${a.title}</h3>

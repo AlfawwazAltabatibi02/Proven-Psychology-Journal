@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumina Admin — Dashboard</title>
+  <title>PROVEN PSYCHOLOGY JOURNAL — Admin Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="admin.css" />
@@ -16,7 +16,7 @@
       <div class="login-logo">
         <span class="logo-icon">✦</span>
         <div>
-          <span class="logo-main">LUMINA</span>
+          <span class="logo-main" style="font-size:13px;letter-spacing:0.5px;">PROVEN PSYCHOLOGY JOURNAL</span>
           <span class="logo-sub">Admin Dashboard</span>
         </div>
       </div>
@@ -37,7 +37,7 @@
         <div class="login-error hidden" id="login-error">Incorrect username or password</div>
         <button type="submit" class="btn-primary" id="login-btn">Sign In</button>
       </form>
-      <p class="login-hint">Default: <strong>admin</strong> / <strong>lumina2026</strong></p>
+      <p class="login-hint">Default: <strong>admin</strong> / <strong>ppj2026</strong></p>
     </div>
   </div>
 
@@ -49,7 +49,7 @@
       <div class="sidebar-logo">
         <span class="logo-icon">✦</span>
         <div>
-          <span class="logo-main">LUMINA</span>
+          <span class="logo-main" style="font-size:11px;letter-spacing:0.5px;">PROVEN PSYCHOLOGY JOURNAL</span>
           <span class="logo-sub">Admin</span>
         </div>
       </div>
@@ -153,7 +153,6 @@
               <select id="cat-filter" class="filter-select">
                 <option value="">All Categories</option>
                 <option>Mindfulness</option>
-                <option>Philosophy</option>
                 <option>Psychology</option>
                 <option>Reflective Insights</option>
                 <option>Campus News</option>
@@ -189,7 +188,6 @@
                   <select id="art-category" required>
                     <option value="">Select category…</option>
                     <option>Mindfulness</option>
-                    <option>Philosophy</option>
                     <option>Psychology</option>
                     <option>Reflective Insights</option>
                     <option>Campus News</option>
@@ -208,24 +206,54 @@
                   <input type="text" id="art-read" placeholder="e.g. 5 min read" readonly style="background-color: var(--border-light); cursor: not-allowed;" />
                 </div>
                 <div class="form-group full">
-                  <label for="art-excerpt">Excerpt</label>
+                  <label>Excerpt</label>
                   <textarea id="art-excerpt" rows="2" placeholder="Short summary shown on cards…"></textarea>
                 </div>
+
+                <!-- ── COVER IMAGE ── -->
                 <div class="form-group full">
-                  <label for="art-content">Article Content *</label>
-                  <div class="editor-toolbar">
-                    <button type="button" class="toolbar-btn" data-cmd="bold" title="Bold"><b>B</b></button>
-                    <button type="button" class="toolbar-btn" data-cmd="italic" title="Italic"><i>I</i></button>
-                    <button type="button" class="toolbar-btn" data-cmd="insertParagraph" title="Paragraph">¶</button>
-                    <span class="toolbar-sep"></span>
-                    <span class="toolbar-hint">Rich text editor</span>
+                  <label>Cover / Display Image</label>
+                  <div class="cover-drop-zone" id="cover-drop-zone">
+                    <div class="cover-drop-placeholder" id="cover-drop-placeholder">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      <span>Click to upload cover image</span>
+                      <span class="cover-drop-hint">or drag and drop</span>
+                      <input type="file" id="art-img-file" accept="image/*" class="cover-file-input" />
+                    </div>
+                    <div class="cover-drop-preview hidden" id="cover-drop-preview">
+                      <img id="cover-thumb" src="" alt="Cover preview" />
+                      <div class="cover-preview-overlay">
+                        <button type="button" class="btn-cover-change" id="btn-cover-change">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                          Change
+                        </button>
+                        <button type="button" class="btn-cover-remove" id="btn-cover-remove">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+                          Remove
+                        </button>
+                        <input type="file" id="art-img-file-change" accept="image/*" class="cover-file-input" />
+                      </div>
+                    </div>
                   </div>
-                  <div id="art-content" class="rich-editor" contenteditable="true" data-placeholder="Write your article here…"></div>
+                  <input type="hidden" id="art-img" />
                 </div>
+
+                <!-- ── BLOCK EDITOR ── -->
                 <div class="form-group full">
-                  <label for="art-img">Image Path</label>
-                  <input type="text" id="art-img" placeholder="images/article_mindfulness.png" />
-                  <span class="field-hint">Use: images/hero_banner.png, images/article_mindfulness.png, images/article_philosophy.png, images/article_psychology.png, images/article_campus.png, images/article_reflective.png</span>
+                  <label>Article Content *</label>
+                  <div class="block-editor-container" id="block-editor">
+                    <!-- Blocks rendered by JS -->
+                  </div>
+                  <div class="block-add-bar">
+                    <button type="button" class="btn-add-block" id="btn-add-paragraph">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                      Add Paragraph
+                    </button>
+                    <button type="button" class="btn-add-block btn-add-img-block" id="btn-add-image">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      Add Image
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="form-actions">
