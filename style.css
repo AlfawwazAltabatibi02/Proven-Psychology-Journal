@@ -238,7 +238,6 @@ input, select, textarea { font-family: inherit; outline: none; }
 }
 .hero-excerpt {
   font-size: 15px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.6; max-width: 100%;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;
 }
 .hero-meta { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; }
 .hero-dot { opacity: 0.5; }
@@ -323,7 +322,7 @@ input, select, textarea { font-family: inherit; outline: none; }
 .card-category { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--moss); }
 .card-title { font-family: var(--font-serif); font-size: 18px; line-height: 1.4; margin: 8px 0 12px; color: var(--text-dark); }
 .featured-card .card-title { font-size: 22px; }
-.card-excerpt { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+.card-excerpt { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; }
 .card-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px; }
 .card-author { color: var(--moss); font-weight: 600; }
 .card-tag-inline { background: var(--light-green); color: var(--forest); padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; }
@@ -358,7 +357,7 @@ input, select, textarea { font-family: inherit; outline: none; }
 .list-card:hover .list-card-image img { transform: scale(1.05); }
 .list-card-content { padding: 24px 24px 24px 0; flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .list-card-title { font-family: var(--font-serif); font-size: 20px; line-height: 1.35; margin: 8px 0 12px; }
-.list-card-excerpt { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+.list-card-excerpt { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; }
 
 /* ===== PSYCHOLOGY GRID ===== */
 .psych-grid { display: grid; grid-template-columns: 1fr 340px; gap: 28px; }

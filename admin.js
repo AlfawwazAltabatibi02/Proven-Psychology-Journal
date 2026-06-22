@@ -1,7 +1,17 @@
 /* =============================================
    PROVEN PSYCHOLOGY JOURNAL — admin.js
-   Full CRUD for articles via localStorage
+   Full CRUD for articles via REST API backend
    ============================================= */
+
+// ── IMAGE UPLOAD HELPER ────────────────────────
+async function uploadImageToServer(file) {
+  const formData = new FormData();
+  formData.append('image', file);
+  const res = await fetch('/api/upload', { method: 'POST', body: formData });
+  if (!res.ok) throw new Error('Image upload failed');
+  const data = await res.json();
+  return data.url; // e.g. "images/upload_1234567890.jpg"
+}
 
 const ADMIN_USER = 'admin';
 const ADMIN_PASS = 'ppj2026';
@@ -495,31 +505,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Upload image in image block
     blockEditor.querySelectorAll('.block-file-input').forEach(input => {
-      input.addEventListener('change', () => {
+      input.addEventListener('change', async () => {
         const bid = Number(input.dataset.bid);
         const file = input.files[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = evt => {
+        input.value = '';
+        showToast('Uploading image…', 'info');
+        try {
+          const url = await uploadImageToServer(file);
           const b = blocks.find(x => x.id === bid);
-          if (b) { b.src = evt.target.result; renderBlocks(); }
-        };
-        reader.readAsDataURL(file);
+          if (b) { b.src = url; renderBlocks(); }
+          showToast('Image uploaded ✓', 'success');
+        } catch(err) { showToast('Upload failed: ' + err.message, 'error'); }
       });
     });
 
     // Change image
     blockEditor.querySelectorAll('.block-file-change').forEach(input => {
-      input.addEventListener('change', () => {
+      input.addEventListener('change', async () => {
         const bid = Number(input.dataset.bid);
         const file = input.files[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = evt => {
+        input.value = '';
+        showToast('Uploading image…', 'info');
+        try {
+          const url = await uploadImageToServer(file);
           const b = blocks.find(x => x.id === bid);
-          if (b) { b.src = evt.target.result; renderBlocks(); }
-        };
-        reader.readAsDataURL(file);
+          if (b) { b.src = url; renderBlocks(); }
+          showToast('Image uploaded ✓', 'success');
+        } catch(err) { showToast('Upload failed: ' + err.message, 'error'); }
       });
     });
 
@@ -682,16 +696,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function bindCoverUpload(inputEl) {
-    inputEl.addEventListener('change', () => {
+    inputEl.addEventListener('change', async () => {
       const file = inputEl.files[0];
       if (!file) return;
-      const reader = new FileReader();
-      reader.onload = evt => {
-        setCoverImg(evt.target.result);
-        showToast('Cover image loaded ✓', 'success');
-      };
-      reader.readAsDataURL(file);
       inputEl.value = '';
+      showToast('Uploading cover image…', 'info');
+      try {
+        const url = await uploadImageToServer(file);
+        setCoverImg(url);
+        showToast('Cover image uploaded ✓', 'success');
+      } catch(err) { showToast('Upload failed: ' + err.message, 'error'); }
     });
   }
 
