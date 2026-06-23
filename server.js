@@ -77,7 +77,7 @@ const storage = multer.diskStorage({
     cb(null, `upload_${Date.now()}${ext}`);
   }
 });
-const upload = multer({ storage, limits: { fileSize: 20 * 1024 * 1024 } });
+const upload = multer({ storage });
 
 // Helper to read database (fallback mode)
 function readDB() {
@@ -141,6 +141,15 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
     const url = `images/${req.file.filename}`;
     res.json({ url });
   }
+});
+
+// ── HEALTH CHECK ─────────────────────────────────
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    database: isMongoConnected ? 'connected (MongoDB)' : 'fallback (local file-system)',
+    uptime: process.uptime()
+  });
 });
 
 // ── ARTICLES ────────────────────────────────────

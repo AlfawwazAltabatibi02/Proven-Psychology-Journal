@@ -556,8 +556,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addImageBlock() {
-    const imgCount = blocks.filter(b => b.type === 'image').length;
-    if (imgCount >= 5) { showToast('Maximum of 5 images per article.', 'error'); return; }
     blocks.push({ id: makeBlockId(), type: 'image', src: '', align: 'center', caption: '' });
     renderBlocks();
   }
