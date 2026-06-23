@@ -23,6 +23,7 @@ if (!fs.existsSync(IMAGES_DIR)) {
 // ── DATABASE PERSISTENCE CONFIGURATION ──────────────────────────
 const MONGODB_URI = process.env.MONGODB_URI;
 let isMongoConnected = false;
+let mongoConnectionError = null;
 
 // ── MONGOOSE SCHEMAS & MODELS ────────────────────────────────────
 const articleSchema = new mongoose.Schema({
@@ -148,6 +149,8 @@ app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
     database: isMongoConnected ? 'connected (MongoDB)' : 'fallback (local file-system)',
+    hasUri: !!MONGODB_URI,
+    error: mongoConnectionError ? mongoConnectionError.message : null,
     uptime: process.uptime()
   });
 });
@@ -314,6 +317,7 @@ async function startServer() {
       isMongoConnected = true;
       console.log('Connected to MongoDB Atlas successfully.');
     } catch (err) {
+      mongoConnectionError = err;
       console.error('Failed to connect to MongoDB Atlas:', err);
       console.log('Running in fallback file-system mode (db.json).');
     }
